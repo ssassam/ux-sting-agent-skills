@@ -1,5 +1,15 @@
 # UX-STING Agent Skills
 
+[![npm: ux-sting](https://img.shields.io/npm/v/ux-sting.svg?label=ux-sting)](https://www.npmjs.com/package/ux-sting)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
+[![8+1](https://img.shields.io/badge/skills-8%20%C3%97%201%20agent-7c5cff.svg)](#skills)
+[![Claude Code](https://img.shields.io/badge/Claude%20Code-plugin-blue.svg)](#install)
+[![Codex](https://img.shields.io/badge/Codex-skills-blueviolet.svg)](#install)
+[![Cursor](https://img.shields.io/badge/Cursor-skills-lightgrey.svg)](#install)
+[![VS%20Code](https://img.shields.io/badge/VS%20Code-Copilot-2b81c9.svg)](#install)
+[![Gemini](https://img.shields.io/badge/Gemini-CLI-4285F4.svg)](#install)
+[![Qoder](https://img.shields.io/badge/Qoder-plugin-ff5c8a.svg)](#install)
+
 Cross-host **Agent Skills** that teach coding agents to build accessible, themeable,
 art-directed UI with [UX-STING](https://github.com/ssassam/UX-STING), an MIT React
 design system for Next.js and any React app.
@@ -11,6 +21,7 @@ and distributable bundles for every major agent platform.
 
 | Skill | What it does |
 | --- | --- |
+| **ux-sting-design-agent** | Universal design agent — routes any UI task to the right skill and always verifies |
 | **ux-sting** | Pick components, apply tokens/themes, wire `@ux-sting/react` into an app |
 | **ux-sting-taste** | Art-direct a page so it looks designed for the client, not generated |
 | **ux-sting-review** | Accessibility/UX/design review with evidence and severity ranking |
@@ -34,7 +45,9 @@ Gemini CLI, Qoder** and other compatible hosts.
 npx skills add ssassam/ux-sting-agent-skills
 ```
 
-This detects your agent and installs the skills into the right place. Pointer files
+This detects your agent and installs the skills into the right place. The tools the
+skills drive are on npm too — `npm i -D ux-sting @ux-sting/qa @ux-sting/extract @ux-sting/images`
+([`ux-sting` on npm](https://www.npmjs.com/package/ux-sting), currently `0.6.2`). Pointer files
 ([`AGENTS.md`](./AGENTS.md), [`CLAUDE.md`](./CLAUDE.md), [`GEMINI.md`](./GEMINI.md),
 [`.github/copilot-instructions.md`](./.github/copilot-instructions.md)) make the
 skills discoverable to hosts that read a repo context file.
@@ -60,6 +73,9 @@ pull them anywhere with `npx skills add ssassam/ux-sting-agent-skills`.
 
 **Manual:** copy any folders from [`.claude/skills/`](./.claude/skills) into your
 host's skills directory.
+
+**Offline / prebuilt:** download the Qoder plugin and skills-bundle zips from
+[Releases](https://github.com/ssassam/ux-sting-agent-skills/releases/latest).
 
 ## Runtime dependencies (not bundled)
 
