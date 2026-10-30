@@ -22,6 +22,8 @@ npx skills add ssassam/ux-sting-agent-skills    # detects your agent (Cursor, Co
 /plugin install ux-sting@ux-sting-agent-skills
 ```
 
+**OpenAI Codex** auto-discovers the skills in this repo from `.agents/skills/` (a generated mirror of `.claude/skills/`). Run `/skills` to list them or `$ux-sting-taste` to invoke one.
+
 Or drop these skill folders into your host's skills directory (e.g.
 `.claude/skills/`, your Cursor/Codex/Gemini skills folder, or the Qoder plugin).
 Source of truth lives in `.claude/skills/`.

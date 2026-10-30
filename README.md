@@ -49,6 +49,12 @@ skills discoverable to hosts that read a repo context file.
 (`.claude-plugin/plugin.json` + `.claude-plugin/marketplace.json`, pointing at the
 same `.claude/skills/` — no duplicate copy.)
 
+**OpenAI Codex:** Codex has no separate plugin manifest — it scans the open skills
+standard directly. This repo ships a generated [`.agents/skills/`](./.agents/skills)
+mirror of `.claude/skills/` that Codex auto-discovers from the repo root. Open Codex
+in this repo and run `/skills`, or invoke one with `$ux-sting-taste`. You can also
+pull them anywhere with `npx skills add ssassam/ux-sting-agent-skills`.
+
 **Qoder:** load the generated plugin at [`dist/ux-sting-agent-skills/`](./dist/ux-sting-agent-skills)
 (validated against the Qoder plugin manifest).
 

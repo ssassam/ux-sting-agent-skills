@@ -85,6 +85,8 @@ npx skills add ssassam/ux-sting-agent-skills    # detects your agent (Cursor, Co
 /plugin install ux-sting@ux-sting-agent-skills
 \`\`\`
 
+**OpenAI Codex** auto-discovers the skills in this repo from \`.agents/skills/\` (a generated mirror of \`.claude/skills/\`). Run \`/skills\` to list them or \`$ux-sting-taste\` to invoke one.
+
 Or drop these skill folders into your host's skills directory (e.g.
 \`.claude/skills/\`, your Cursor/Codex/Gemini skills folder, or the Qoder plugin).
 Source of truth lives in \`.claude/skills/\`.
@@ -117,6 +119,19 @@ for (const s of skills) cpSync(join(SRC, s.dir), join(BUNDLE_DIR, "skills", s.di
 writeFileSync(
   join(BUNDLE_DIR, "README.md"),
   `# UX-STING Agent Skills — bundle\n\n${GENERATED}\n\nA plain copy of \`.claude/skills/\` for hosts without the CLI installer.\nPoint your agent's skills directory at \`skills/\`, or copy the folders you need into it.\n\n${skillIndex()}\n`,
+);
+
+// ---- Codex repo-discovery mirror (.agents/skills) ----
+// Codex scans .agents/skills/ from the working dir up to the repo root. We keep
+// .claude/skills/ as the single hand-edited source and regenerate this mirror so
+// Codex discovers the same skills with zero drift. Committed on purpose.
+const CODEX_DIR = join(ROOT, ".agents", "skills");
+rmSync(CODEX_DIR, { recursive: true, force: true });
+mkdirSync(CODEX_DIR, { recursive: true });
+for (const s of skills) cpSync(join(SRC, s.dir), join(CODEX_DIR, s.dir), { recursive: true });
+writeFileSync(
+  join(ROOT, ".agents", "README.md"),
+  `# .agents/skills (Codex)\n\n${GENERATED}\n\nAuto-generated mirror of \`.claude/skills/\` for OpenAI Codex, which scans \`.agents/skills/\` from the working directory up to the repo root.\nEdit the source in \`.claude/skills/\` and re-run \`node scripts/build-agent-skills.mjs\` \u2014 do not hand-edit this folder.\n\n${skillIndex()}\n`,
 );
 
 // ---- Qoder plugin ----
@@ -238,6 +253,7 @@ for (const s of skills) {
   console.log(`  - ${s.dir}${extras}`);
 }
 console.log(`Pointers: AGENTS.md, CLAUDE.md, GEMINI.md, .github/copilot-instructions.md`);
+console.log(`Codex:    .agents/skills/ (repo-discovery mirror)`);
 console.log(`Claude:   .claude-plugin/{plugin.json,marketplace.json} (repo is the marketplace)`);
 console.log(`Bundle:   ${rel(BUNDLE_DIR)}`);
 console.log(`Plugin:   ${rel(PLUGIN_DIR)}`);
