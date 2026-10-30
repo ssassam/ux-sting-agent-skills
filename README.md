@@ -1,5 +1,10 @@
 # UX-STING Agent Skills
 
+> **⚠️ Moved — this repo is archived.** The skills now live in the single, SEO-indexed
+> home [**ssassam/UX-STING**](https://github.com/ssassam/UX-STING). Install from there:
+> `npx skills add ssassam/UX-STING` · or in Claude Code
+> `/plugin marketplace add ssassam/UX-STING` → `/plugin install ux-sting@ux-sting`.
+
 [![npm: ux-sting](https://img.shields.io/npm/v/ux-sting.svg?label=ux-sting)](https://www.npmjs.com/package/ux-sting)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 [![8+1](https://img.shields.io/badge/skills-8%20%C3%97%201%20agent-7c5cff.svg)](#skills)
