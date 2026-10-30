@@ -78,15 +78,24 @@ pwsh scripts/zip-dist.ps1             # zip the dist outputs
 ```
 
 Edit skills in [`.claude/skills/`](./.claude/skills) only; everything else is generated.
+To rename the repo or change owner/credit, edit the constants at the top of
+[`scripts/build-agent-skills.mjs`](./scripts/build-agent-skills.mjs) (`OWNER`, `REPO_SLUG`,
+`SITE_URL`, `PROJECT_URL`) and rebuild — every pointer, manifest and install string follows.
 
-## Provenance & license
+## Provenance, credit & license
 
-MIT — see [`LICENSE`](./LICENSE). These skills adapt and vendor third-party work
-(UI/UX Pro Max, taste-skill, design-taste, diagram-design, logo-design-skill, three.js
-guidance). Full attribution and license obligations are in
+MIT — see [`LICENSE`](./LICENSE). **Free to use and to contribute.** In exchange we
+ask that you keep the license notice and **credit [VELTEIN](https://veltein.com) and
+[UX-STING](https://github.com/ssassam/UX-STING)** where these skills are used,
+forked or redistributed.
+
+These skills adapt and vendor third-party work (UI/UX Pro Max, taste-skill,
+design-taste, diagram-design, logo-design-skill, three.js guidance). Full
+attribution and license obligations are in
 [`THIRD_PARTY_NOTICES.md`](./THIRD_PARTY_NOTICES.md) and must travel with any
-redistribution.
+redistribution. See [`CONTRIBUTING.md`](./CONTRIBUTING.md) to contribute.
 
 ## Made by VELTEIN
 
-UX-STING by [Issam El Bani](https://github.com/ssassam) — support the work on Buy Me a Coffee.
+UX-STING Agent Skills by [Issam El Bani — VELTEIN](https://veltein.com). Support the
+work on Buy Me a Coffee.

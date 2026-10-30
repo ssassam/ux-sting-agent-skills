@@ -34,6 +34,10 @@ Source of truth lives in `.claude/skills/`.
 - The `ux-sting` CLI for QA / token extraction / images: `npm i -D ux-sting @ux-sting/qa @ux-sting/extract @ux-sting/images` then `npx playwright-core install chromium`.
 - Python 3 for the `logo-design` scripts (dependency-free stdlib only).
 
+## Credit
+
+Free to use and contribute (MIT). Please keep this notice and credit **[VELTEIN](https://veltein.com)** and **[UX-STING](https://github.com/ssassam/UX-STING)**.
+
 ## Skills
 
 - **logo-design** — 

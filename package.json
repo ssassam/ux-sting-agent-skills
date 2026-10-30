@@ -4,8 +4,11 @@
   "private": true,
   "description": "Cross-host agent skills for building accessible, art-directed UI with the UX-STING design system.",
   "license": "MIT",
-  "author": "Issam El Bani (VELTEIN)",
-  "homepage": "https://ssassam.github.io/UX-STING/",
+  "author": {
+    "name": "Issam El Bani — VELTEIN",
+    "url": "https://veltein.com"
+  },
+  "homepage": "https://veltein.com",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ssassam/UX-STING.git"

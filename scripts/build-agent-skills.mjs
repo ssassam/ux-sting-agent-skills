@@ -17,7 +17,16 @@ import { fileURLToPath } from "node:url";
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const SRC = join(ROOT, ".claude", "skills");
 const DIST = join(ROOT, "dist");
-const PLUGIN_NAME = "ux-sting-agent-skills";
+// ---- distribution identity — edit THESE; everything derives from them ----
+const OWNER = "ssassam";                                  // GitHub owner (user/org)
+const REPO_SLUG = "ux-sting-agent-skills";               // MUST equal the GitHub repo name
+const PLUGIN_ID = "ux-sting";                            // short name => ux-sting@REPO_SLUG
+const SITE_URL = "https://veltein.com";                  // your website (credit target)
+const PROJECT_URL = "https://github.com/ssassam/UX-STING"; // UX-STING design system
+const AUTHOR = { name: "Issam El Bani — VELTEIN", url: SITE_URL };
+const REPO_URL = `https://github.com/${OWNER}/${REPO_SLUG}`;
+
+const PLUGIN_NAME = REPO_SLUG;                           // Qoder plugin name + dist folder
 const PLUGIN_DIR = join(DIST, PLUGIN_NAME);
 const BUNDLE_DIR = join(DIST, "skills-bundle");
 
@@ -75,14 +84,14 @@ Gemini CLI, Qoder and other Agent Skills hosts.
 ## Install (universal)
 
 \`\`\`bash
-npx skills add ssassam/ux-sting-agent-skills    # detects your agent (Cursor, Codex, Gemini, Copilot/VS Code…)
+npx skills add ${OWNER}/${REPO_SLUG}    # detects your agent (Cursor, Codex, Gemini, Copilot/VS Code…)
 \`\`\`
 
 **Claude Code** can install this whole repo as a native plugin/marketplace:
 
 \`\`\`
-/plugin marketplace add ssassam/ux-sting-agent-skills
-/plugin install ux-sting@ux-sting-agent-skills
+/plugin marketplace add ${OWNER}/${REPO_SLUG}
+/plugin install ${PLUGIN_ID}@${REPO_SLUG}
 \`\`\`
 
 **OpenAI Codex** auto-discovers the skills in this repo from \`.agents/skills/\` (a generated mirror of \`.claude/skills/\`). Run \`/skills\` to list them or \`$ux-sting-taste\` to invoke one.
@@ -96,6 +105,10 @@ Source of truth lives in \`.claude/skills/\`.
 - \`@ux-sting/react\` + React 18/19 and Tailwind CSS 4 for the UI skills.
 - The \`ux-sting\` CLI for QA / token extraction / images: \`npm i -D ux-sting @ux-sting/qa @ux-sting/extract @ux-sting/images\` then \`npx playwright-core install chromium\`.
 - Python 3 for the \`logo-design\` scripts (dependency-free stdlib only).
+
+## Credit
+
+Free to use and contribute (MIT). Please keep this notice and credit **[VELTEIN](${SITE_URL})** and **[UX-STING](${PROJECT_URL})**.
 
 ## Skills
 
@@ -147,9 +160,9 @@ const manifest = {
   version: "0.1.0",
   description: "Design-system skills that make coding agents build accessible, themeable, art-directed UI with UX-STING.",
   descriptionZh: "让编码代理使用 UX-STING 构建设计无障碍、可主题化、有艺术指导的界面的设计系统技能。",
-  author: { name: "Issam El Bani (VELTEIN)" },
-  homepage: "https://ssassam.github.io/UX-STING/",
-  repository: "https://github.com/ssassam/UX-STING",
+  author: { name: AUTHOR.name, url: AUTHOR.url },
+  homepage: SITE_URL,
+  repository: REPO_URL,
   logo: "./assets/avatar.svg",
   keywords: ["qoder-plugin", "skill", "design-system", "accessibility", "react", "nextjs", "ux", "tailwind"],
   category: "developer-tools",
@@ -214,19 +227,19 @@ if (existsSync(join(ROOT, "LICENSE"))) cpSync(join(ROOT, "LICENSE"), join(PLUGIN
 // root (repo root); the explicit `skills` path points back at the single source of
 // truth in .claude/skills/, so nothing is duplicated or can drift.
 const CLAUDE_MANIFEST = {
-  name: "ux-sting",
+  name: PLUGIN_ID,
   description: "Build accessible, themeable, art-directed UI with the UX-STING design system.",
   version: "0.1.0",
-  author: { name: "Issam El Bani (VELTEIN)" },
-  homepage: "https://ssassam.github.io/UX-STING/",
-  repository: "https://github.com/ssassam/UX-STING",
+  author: { name: AUTHOR.name, url: AUTHOR.url },
+  homepage: SITE_URL,
+  repository: REPO_URL,
   license: "MIT",
   keywords: ["design-system", "accessibility", "react", "nextjs", "ux", "tailwind"],
   skills: "./" + relative(ROOT, SRC).split("\\").join("/") + "/",
 };
 const MARKETPLACE = {
-  name: "ux-sting-agent-skills",
-  owner: { name: "Issam El Bani (VELTEIN)" },
+  name: REPO_SLUG,
+  owner: { name: AUTHOR.name, url: AUTHOR.url },
   metadata: {
     description: "UX-STING agent skills for Claude Code.",
     version: "0.1.0",
@@ -234,7 +247,7 @@ const MARKETPLACE = {
   },
   plugins: [
     {
-      name: "ux-sting",
+      name: PLUGIN_ID,
       description: CLAUDE_MANIFEST.description,
       category: "developer-tools",
       source: "./",

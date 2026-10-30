@@ -1,7 +1,8 @@
 {
   "name": "ux-sting-agent-skills",
   "owner": {
-    "name": "Issam El Bani (VELTEIN)"
+    "name": "Issam El Bani — VELTEIN",
+    "url": "https://veltein.com"
   },
   "metadata": {
     "description": "UX-STING agent skills for Claude Code.",
