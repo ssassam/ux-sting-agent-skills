@@ -1,0 +1,33 @@
+{
+  "name": "ux-sting-agent-skills",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Cross-host agent skills for building accessible, art-directed UI with the UX-STING design system.",
+  "license": "MIT",
+  "author": "Issam El Bani (VELTEIN)",
+  "homepage": "https://ssassam.github.io/UX-STING/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ssassam/UX-STING.git"
+  },
+  "keywords": [
+    "agent-skills",
+    "claude-code",
+    "cursor",
+    "codex",
+    "copilot",
+    "gemini",
+    "qoder",
+    "design-system",
+    "accessibility",
+    "ux"
+  ],
+  "scripts": {
+    "build": "node scripts/build-agent-skills.mjs",
+    "zip": "pwsh scripts/zip-dist.ps1",
+    "prepublishOnly": "node scripts/build-agent-skills.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
