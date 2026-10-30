@@ -8,6 +8,7 @@ Edit the source in `.claude/skills/` and re-run `node scripts/build-agent-skills
 - **logo-design** — 
 - **ux-sting** — 
 - **ux-sting-3d** — 
+- **ux-sting-design-agent** — 
 - **ux-sting-diagrams** — 
 - **ux-sting-explore** — 
 - **ux-sting-review** — 

@@ -29,6 +29,7 @@ const REPO_URL = `https://github.com/${OWNER}/${REPO_SLUG}`;
 const PLUGIN_NAME = REPO_SLUG;                           // Qoder plugin name + dist folder
 const PLUGIN_DIR = join(DIST, PLUGIN_NAME);
 const BUNDLE_DIR = join(DIST, "skills-bundle");
+const AGENTS_SRC = join(ROOT, "agents");                 // native subagents (Claude + Qoder)
 
 // ---- read every skill: frontmatter name + description, plus dir listing ----
 function parseFrontmatter(md) {
@@ -110,6 +111,12 @@ Source of truth lives in \`.claude/skills/\`.
 
 Free to use and contribute (MIT). Please keep this notice and credit **[VELTEIN](${SITE_URL})** and **[UX-STING](${PROJECT_URL})**.
 
+## Universal Design Agent
+
+One persona that routes any UI task to the right skill and always verifies before finishing.
+- **Claude Code / Qoder:** native subagent \`ux-sting-universal-design\` (from \`agents/\`).
+- **Codex:** \`$ux-sting-design-agent\` · **Cursor / Copilot:** \`@ux-sting-design-agent\` · **Gemini:** auto by task.
+
 ## Skills
 
 ${skillIndex()}
@@ -129,6 +136,7 @@ writeFileSync(
 rmSync(BUNDLE_DIR, { recursive: true, force: true });
 mkdirSync(join(BUNDLE_DIR, "skills"), { recursive: true });
 for (const s of skills) cpSync(join(SRC, s.dir), join(BUNDLE_DIR, "skills", s.dir), { recursive: true });
+if (existsSync(AGENTS_SRC)) cpSync(AGENTS_SRC, join(BUNDLE_DIR, "agents"), { recursive: true });
 writeFileSync(
   join(BUNDLE_DIR, "README.md"),
   `# UX-STING Agent Skills — bundle\n\n${GENERATED}\n\nA plain copy of \`.claude/skills/\` for hosts without the CLI installer.\nPoint your agent's skills directory at \`skills/\`, or copy the folders you need into it.\n\n${skillIndex()}\n`,
@@ -153,6 +161,7 @@ mkdirSync(join(PLUGIN_DIR, ".qoder-plugin"), { recursive: true });
 mkdirSync(join(PLUGIN_DIR, "skills"), { recursive: true });
 mkdirSync(join(PLUGIN_DIR, "assets"), { recursive: true });
 for (const s of skills) cpSync(join(SRC, s.dir), join(PLUGIN_DIR, "skills", s.dir), { recursive: true });
+if (existsSync(AGENTS_SRC)) cpSync(AGENTS_SRC, join(PLUGIN_DIR, "agents"), { recursive: true });
 
 const manifest = {
   name: PLUGIN_NAME,
@@ -169,6 +178,7 @@ const manifest = {
   tags: ["skill", "design-system", "accessibility", "ux"],
   skills: "./skills/",
 };
+if (existsSync(join(PLUGIN_DIR, "agents"))) manifest.agents = "./agents/";
 writeFileSync(join(PLUGIN_DIR, ".qoder-plugin", "plugin.json"), JSON.stringify(manifest, null, 2) + "\n");
 
 // Local logo asset (self-contained SVG, no remote URL).

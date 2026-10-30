@@ -38,11 +38,18 @@ Source of truth lives in `.claude/skills/`.
 
 Free to use and contribute (MIT). Please keep this notice and credit **[VELTEIN](https://veltein.com)** and **[UX-STING](https://github.com/ssassam/UX-STING)**.
 
+## Universal Design Agent
+
+One persona that routes any UI task to the right skill and always verifies before finishing.
+- **Claude Code / Qoder:** native subagent `ux-sting-universal-design` (from `agents/`).
+- **Codex:** `$ux-sting-design-agent` · **Cursor / Copilot:** `@ux-sting-design-agent` · **Gemini:** auto by task.
+
 ## Skills
 
 - **logo-design** — 
 - **ux-sting** — 
 - **ux-sting-3d** — 
+- **ux-sting-design-agent** — 
 - **ux-sting-diagrams** — 
 - **ux-sting-explore** — 
 - **ux-sting-review** — 
